@@ -267,7 +267,7 @@
                 <div class="section">
                     <h2 class="section-title"><i class="fas fa-info-circle"></i> Introduction</h2>
                     <div class="section-content">
-                        <p>This Privacy Policy explains how our application ("App") handles your information. We want to be transparent about our practices so you can feel confident using our App.</p>
+                        <p>This Privacy Policy explains how our application handles your information. We want to be transparent about our practices so you can feel confident using our App.</p>
                         <p>By using our App, you agree to the terms outlined in this Privacy Policy.</p>
                     </div>
                 </div>
@@ -355,7 +355,7 @@
             
             // Simulate redirect after acceptance
             setTimeout(() => {
-                window.location.href = 'app-home.html'; // Redirect to app home
+                window.location.href = 'https://app.eduniapps.com'; // Redirect to app home
             }, 1500);
         });
 
@@ -426,8 +426,8 @@
         window.addEventListener('DOMContentLoaded', function() {
             const accepted = localStorage.getItem('privacyPolicyAccepted');
             if (accepted === 'true') {
-                // In a real app, you might automatically redirect users who have already accepted
-                // window.location.href = 'app-home.html';
+            
+                window.location.href = 'https://app.eduniapps.com';
             }
         });
 
