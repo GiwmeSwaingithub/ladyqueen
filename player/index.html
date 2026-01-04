@@ -5,415 +5,212 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>YouTube Player</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
-        }
-        
-        body {
-            background: #000;
-            height: 100vh;
-            overflow: hidden;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        }
-        
-        #player-container {
-            width: 100%;
-            height: 100%;
-            position: relative;
-            background: #000;
-        }
-        
-        #player {
-            width: 100%;
-            height: 100%;
-        }
-        
-        .loading {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: white;
-            font-size: 18px;
-            z-index: 10;
-        }
-        
-        .error {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: white;
-            text-align: center;
-            padding: 20px;
-            z-index: 10;
-        }
-        
-        .controls {
-            position: fixed;
-            bottom: 20px;
-            left: 0;
-            right: 0;
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            z-index: 100;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-        
-        .controls.visible {
-            opacity: 1;
-        }
-        
-        .control-btn {
-            background: rgba(255, 0, 0, 0.8);
-            color: white;
-            border: none;
-            padding: 12px 20px;
-            border-radius: 25px;
-            font-size: 14px;
-            cursor: pointer;
-            min-width: 100px;
-        }
-        
-        .control-btn:active {
-            background: rgba(255, 0, 0, 1);
-        }
-        
-        @media (max-width: 768px) {
-            .controls {
-                bottom: 10px;
-            }
-            
-            .control-btn {
-                padding: 10px 15px;
-                font-size: 13px;
-                min-width: 80px;
-            }
-        }
+        /* CRITICAL CSS - Inline for fastest render */
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        body { background: #000; height: 100vh; overflow: hidden; font-family: -apple-system, sans-serif; }
+        #player-container, #player { width: 100%; height: 100%; position: relative; }
+        .loading { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); color: white; font-size: 16px; }
+        .error { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); color: white; text-align: center; display: none; }
     </style>
+    <!-- Preconnect to YouTube domains -->
+    <link rel="preconnect" href="https://www.youtube.com">
+    <link rel="preconnect" href="https://www.google.com">
+    <link rel="dns-prefetch" href="https://www.youtube.com">
+    <link rel="dns-prefetch" href="https://www.google.com">
 </head>
 <body>
+    <!-- Minimal DOM for fastest rendering -->
     <div id="player-container">
-        <div class="loading" id="loading">Loading player...</div>
+        <div class="loading" id="loading">Loading...</div>
         <div id="player"></div>
-        <div class="error" id="error" style="display: none;"></div>
-        
-        <div class="controls" id="controls">
-            <button class="control-btn" id="playBtn">Play</button>
-            <button class="control-btn" id="pauseBtn">Pause</button>
-            <button class="control-btn" id="fullscreenBtn">Fullscreen</button>
+        <div class="error" id="error">
+            <div id="errorMessage"></div>
+            <button id="retryBtn" style="display:none;margin-top:10px;padding:8px 16px;background:#ff0000;color:white;border:none;border-radius:4px;">Retry</button>
         </div>
     </div>
 
     <script>
-        // Get video ID from URL
-        function getVideoIdFromUrl() {
+        // IMMEDIATE EXECUTION - No DOMContentLoaded wait
+        (function() {
+            'use strict';
+            
+            // Fast URL parsing
             const urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get('v') || urlParams.get('videoId') || 'M7lc1UVf-VE';
-        }
-        
-        // Get autoplay setting from URL
-        function getAutoplayFromUrl() {
-            const urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get('autoplay') !== '0';
-        }
-        
-        // Get controls setting from URL
-        function getShowControlsFromUrl() {
-            const urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get('controls') !== '0';
-        }
-        
-        let player;
-        let isFullscreen = false;
-        
-        // Load YouTube API
-        const tag = document.createElement('script');
-        tag.src = "https://www.youtube.com/iframe_api";
-        const firstScriptTag = document.getElementsByTagName('script')[0];
-        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-        
-        // YouTube API ready callback
-        function onYouTubeIframeAPIReady() {
-            console.log('YouTube API Ready');
+            const videoId = urlParams.get('v') || urlParams.get('videoId') || 'M7lc1UVf-VE';
+            const autoplay = urlParams.get('autoplay') !== '0';
             
-            const videoId = getVideoIdFromUrl();
-            const autoplay = getAutoplayFromUrl();
-            const showControls = getShowControlsFromUrl();
+            // Fast DOM references
+            const loadingEl = document.getElementById('loading');
+            const errorEl = document.getElementById('error');
+            const errorMsgEl = document.getElementById('errorMessage');
+            const retryBtn = document.getElementById('retryBtn');
             
-            player = new YT.Player('player', {
-                width: '100%',
-                height: '100%',
-                videoId: videoId,
-                playerVars: {
-                    'autoplay': autoplay ? 1 : 0,
-                    'playsinline': 1,
-                    'controls': showControls ? 1 : 0,
-                    'rel': 0,
-                    'modestbranding': 1,
-                    'fs': 1,
-                    'iv_load_policy': 3,
-                    'origin': window.location.origin
-                },
-                events: {
-                    'onReady': onPlayerReady,
-                    'onStateChange': onPlayerStateChange,
-                    'onError': onPlayerError,
-                    'onPlaybackQualityChange': onPlaybackQualityChange
-                }
-            });
-        }
-        
-        function onPlayerReady(event) {
-            console.log('Player Ready');
-            document.getElementById('loading').style.display = 'none';
+            let player = null;
+            let isPlayerReady = false;
             
-            // Hide YouTube's native controls if we're showing custom ones
-            if (!getShowControlsFromUrl()) {
-                showCustomControls();
-            }
-            
-            // Send ready message to parent (Android app)
-            if (window.parent) {
-                window.parent.postMessage({
-                    type: 'PLAYER_READY',
-                    videoId: getVideoIdFromUrl()
-                }, '*');
-            }
-            
-            // Send ready message to JS interface
-            if (window.Android) {
-                window.Android.onPlayerReady();
-            }
-        }
-        
-        function onPlayerStateChange(event) {
-            console.log('Player State:', event.data);
-            
-            // Send state to parent (Android app)
-            if (window.parent) {
-                window.parent.postMessage({
-                    type: 'PLAYER_STATE',
-                    state: event.data,
-                    videoId: getVideoIdFromUrl()
-                }, '*');
-            }
-            
-            // Update custom controls visibility
-            updateControlsVisibility(event.data);
-            
-            // Send to JS interface
-            if (window.Android) {
-                window.Android.onPlayerStateChange(event.data);
-            }
-        }
-        
-        function onPlayerError(event) {
-            console.error('Player Error:', event.data);
-            document.getElementById('loading').style.display = 'none';
-            
-            let errorMessage = 'Error loading video';
-            switch(event.data) {
-                case 2:
-                    errorMessage = 'Invalid parameter';
-                    break;
-                case 5:
-                    errorMessage = 'HTML5 player error';
-                    break;
-                case 100:
-                    errorMessage = 'Video not found';
-                    break;
-                case 101:
-                case 150:
-                    errorMessage = 'Video not playable in embed';
-                    break;
-            }
-            
-            document.getElementById('error').textContent = errorMessage;
-            document.getElementById('error').style.display = 'block';
-            
-            // Send error to parent
-            if (window.parent) {
-                window.parent.postMessage({
-                    type: 'PLAYER_ERROR',
-                    errorCode: event.data,
-                    message: errorMessage
-                }, '*');
-            }
-            
-            if (window.Android) {
-                window.Android.onPlayerError(event.data, errorMessage);
-            }
-        }
-        
-        function onPlaybackQualityChange(event) {
-            console.log('Playback Quality:', event.data);
-        }
-        
-        // Custom controls functions
-        function showCustomControls() {
-            const controls = document.getElementById('controls');
-            controls.classList.add('visible');
-            
-            // Add event listeners
-            document.getElementById('playBtn').addEventListener('click', function() {
-                player.playVideo();
-            });
-            
-            document.getElementById('pauseBtn').addEventListener('click', function() {
-                player.pauseVideo();
-            });
-            
-            document.getElementById('fullscreenBtn').addEventListener('click', function() {
-                toggleFullscreen();
-            });
-            
-            // Auto-hide controls after 3 seconds
-            let hideTimeout;
-            function resetHideTimeout() {
-                clearTimeout(hideTimeout);
-                hideTimeout = setTimeout(() => {
-                    controls.classList.remove('visible');
-                }, 3000);
-            }
-            
-            // Show controls on touch/move
-            document.addEventListener('touchstart', function() {
-                controls.classList.add('visible');
-                resetHideTimeout();
-            });
-            
-            document.addEventListener('mousemove', function() {
-                controls.classList.add('visible');
-                resetHideTimeout();
-            });
-            
-            resetHideTimeout();
-        }
-        
-        function updateControlsVisibility(state) {
-            // YT.PlayerState constants
-            // UNSTARTED: -1, ENDED: 0, PLAYING: 1, PAUSED: 2, BUFFERING: 3, CUED: 5
-            const controls = document.getElementById('controls');
-            if (state === YT.PlayerState.PLAYING) {
-                controls.classList.remove('visible');
-            } else if (state === YT.PlayerState.PAUSED) {
-                controls.classList.add('visible');
-            }
-        }
-        
-        function toggleFullscreen() {
-            if (!isFullscreen) {
-                const elem = document.documentElement;
-                if (elem.requestFullscreen) {
-                    elem.requestFullscreen();
-                } else if (elem.webkitRequestFullscreen) { /* Safari */
-                    elem.webkitRequestFullscreen();
-                } else if (elem.msRequestFullscreen) { /* IE11 */
-                    elem.msRequestFullscreen();
-                }
-                isFullscreen = true;
-            } else {
-                if (document.exitFullscreen) {
-                    document.exitFullscreen();
-                } else if (document.webkitExitFullscreen) { /* Safari */
-                    document.webkitExitFullscreen();
-                } else if (document.msExitFullscreen) { /* IE11 */
-                    document.msExitFullscreen();
-                }
-                isFullscreen = false;
-            }
-        }
-        
-        // Handle fullscreen change
-        document.addEventListener('fullscreenchange', handleFullscreenChange);
-        document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
-        document.addEventListener('msfullscreenchange', handleFullscreenChange);
-        
-        function handleFullscreenChange() {
-            isFullscreen = !!document.fullscreenElement || 
-                          !!document.webkitFullscreenElement || 
-                          !!document.msFullscreenElement;
-        }
-        
-        // Handle messages from Android app
-        window.addEventListener('message', function(event) {
-            console.log('Received message from app:', event.data);
-            
-            if (!player) return;
-            
-            const data = event.data;
-            if (typeof data === 'object') {
-                switch(data.type) {
-                    case 'PLAY':
-                        player.playVideo();
-                        break;
-                    case 'PAUSE':
-                        player.pauseVideo();
-                        break;
-                    case 'STOP':
-                        player.stopVideo();
-                        break;
-                    case 'SEEK':
-                        if (data.time) {
-                            player.seekTo(data.time, true);
-                        }
-                        break;
-                    case 'LOAD_VIDEO':
-                        if (data.videoId) {
-                            player.loadVideoById(data.videoId);
-                            document.getElementById('loading').style.display = 'block';
-                            document.getElementById('error').style.display = 'none';
-                        }
-                        break;
-                }
-            } else if (typeof data === 'string') {
-                switch(data) {
-                    case 'play':
-                        player.playVideo();
-                        break;
-                    case 'pause':
-                        player.pauseVideo();
-                        break;
-                    case 'stop':
-                        player.stopVideo();
-                        break;
-                }
-            }
-        });
-        
-        // Handle touch events to prevent page scroll
-        document.addEventListener('touchmove', function(e) {
-            if (e.target.closest('#player-container')) {
-                e.preventDefault();
-            }
-        }, { passive: false });
-        
-        // Handle visibility change
-        document.addEventListener('visibilitychange', function() {
-            if (document.hidden && player && player.getPlayerState() === YT.PlayerState.PLAYING) {
-                player.pauseVideo();
-            }
-        });
-        
-        // Error handling for API load timeout
-        setTimeout(function() {
-            if (!player) {
-                document.getElementById('loading').textContent = 'Failed to load YouTube player. Please check your connection.';
-                document.getElementById('loading').style.color = '#ff4444';
+            // ULTRA-FAST YouTube API loading
+            function loadYouTubeAPI() {
+                // Inject script at highest priority
+                const script = document.createElement('script');
+                script.src = 'https://www.youtube.com/iframe_api';
+                script.async = true;
                 
+                // Set global callback immediately (before script loads)
+                window.onYouTubeIframeAPIReady = function() {
+                    initializePlayer();
+                };
+                
+                script.onerror = function() {
+                    showError('Network Error', true);
+                };
+                
+                // Inject at document start for fastest execution
+                (document.head || document.documentElement).appendChild(script);
+            }
+            
+            // Fast player initialization
+            function initializePlayer() {
+                try {
+                    player = new window.YT.Player('player', {
+                        width: '100%',
+                        height: '100%',
+                        videoId: videoId,
+                        playerVars: {
+                            'autoplay': autoplay ? 1 : 0,
+                            'playsinline': 1,
+                            'controls': 0,
+                            'rel': 0,
+                            'modestbranding': 1,
+                            'fs': 0,
+                            'iv_load_policy': 3,
+                            'disablekb': 1,
+                            'origin': window.location.origin
+                        },
+                        events: {
+                            'onReady': onPlayerReady,
+                            'onStateChange': onPlayerStateChange,
+                            'onError': onPlayerError
+                        }
+                    });
+                } catch (e) {
+                    showError('Player Error', true);
+                }
+            }
+            
+            // Fast error handling
+            function showError(message, retryable) {
+                if (loadingEl) loadingEl.style.display = 'none';
+                if (errorEl) errorEl.style.display = 'block';
+                if (errorMsgEl) errorMsgEl.textContent = message;
+                
+                if (retryable && retryBtn) {
+                    retryBtn.style.display = 'inline-block';
+                    retryBtn.onclick = function() {
+                        errorEl.style.display = 'none';
+                        loadingEl.style.display = 'block';
+                        loadYouTubeAPI();
+                    };
+                } else if (retryBtn) {
+                    retryBtn.style.display = 'none';
+                }
+            }
+            
+            // Optimized event handlers
+            function onPlayerReady(event) {
+                isPlayerReady = true;
+                if (loadingEl) loadingEl.style.display = 'none';
+                
+                // Minimal control hiding - just disable pointer events
+                const iframe = document.querySelector('#player iframe');
+                if (iframe) {
+                    iframe.style.pointerEvents = 'none';
+                }
+                
+                // Send minimal ready message
                 if (window.parent) {
-                    window.parent.postMessage({
-                        type: 'API_LOAD_TIMEOUT'
+                    window.parent.postMessage({ type: 'READY', videoId: videoId }, '*');
+                }
+            }
+            
+            function onPlayerStateChange(event) {
+                // Fast state handling
+                if (event.data === 1 && errorEl) { // PLAYING
+                    errorEl.style.display = 'none';
+                }
+                
+                // Minimal message passing
+                if (window.parent && isPlayerReady) {
+                    window.parent.postMessage({ 
+                        type: 'STATE', 
+                        state: event.data,
+                        time: event.target.getCurrentTime?.() || 0
                     }, '*');
                 }
             }
-        }, 10000);
+            
+            function onPlayerError(event) {
+                let message = 'Playback Error';
+                let retryable = true;
+                
+                switch(event.data) {
+                    case 2: message = 'Invalid Video'; retryable = false; break;
+                    case 100: message = 'Video Not Found'; retryable = false; break;
+                    case 101: case 150: message = 'Embedding Not Allowed'; retryable = false; break;
+                    case 5: message = 'Player Error'; break;
+                }
+                
+                showError(message, retryable);
+                
+                if (window.parent) {
+                    window.parent.postMessage({ type: 'ERROR', code: event.data }, '*');
+                }
+            }
+            
+            // Fast message handling
+            window.addEventListener('message', function(e) {
+                if (!player || !isPlayerReady) return;
+                
+                const msg = e.data;
+                if (typeof msg === 'object') {
+                    switch(msg.type) {
+                        case 'PLAY': player.playVideo?.(); break;
+                        case 'PAUSE': player.pauseVideo?.(); break;
+                        case 'STOP': player.stopVideo?.(); break;
+                        case 'SEEK': if (msg.time) player.seekTo?.(msg.time, true); break;
+                        case 'LOAD': 
+                            if (msg.videoId) {
+                                loadingEl.style.display = 'block';
+                                errorEl.style.display = 'none';
+                                player.loadVideoById?.(msg.videoId);
+                            }
+                            break;
+                    }
+                }
+            });
+            
+            // Fast initialization timeout
+            setTimeout(function() {
+                if (!isPlayerReady && loadingEl.style.display !== 'none') {
+                    showError('Loading Timeout', true);
+                }
+            }, 8000);
+            
+            // START IMMEDIATELY - Begin loading API right away
+            loadYouTubeAPI();
+            
+        })(); // Self-executing for immediate execution
+        
+        // Minimal touch blocking (only essential)
+        document.addEventListener('touchstart', function(e) {
+            if (e.target.tagName === 'BUTTON') return;
+            e.preventDefault();
+        }, { passive: false });
+        
+        // Prevent any context menus
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            return false;
+        });
     </script>
 </body>
 </html>
