@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy | Typespeed by Abwaoke038</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4a148c;
+            --secondary: #7b1fa2;
+            --accent: #e91e63;
+            --gray: #95a5a6;
+            --light-bg: #f9f5ff;
+            --shadow: 0 4px 12px rgba(0,0,0,.08);
+            --radius: 10px;
+        }
+
+        * { 
+            box-sizing: border-box; 
+            margin: 0; 
+            padding: 0; 
+            font-family: 'Segoe UI', system-ui, sans-serif; 
+        }
+
+        body { 
+            background: var(--light-bg); 
+            color: #333; 
+            line-height: 1.6; 
+        }
+
+        .container { 
+            max-width: 1000px; 
+            margin: auto; 
+            padding: 20px; 
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: #fff;
+            padding: 40px 0;
+            box-shadow: var(--shadow);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.05)"/></svg>');
+            background-size: cover;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .app-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+        }
+        
+        header h1 span { 
+            color: #ffcc80; 
+            font-weight: 700;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        main {
+            background: #fff;
+            margin-top: 30px;
+            padding: 40px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+
+        h2 { 
+            color: var(--primary); 
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--light-bg);
+        }
+        
+        h3 { 
+            margin-top: 30px; 
+            color: var(--secondary); 
+            margin-bottom: 10px;
+        }
+
+        p, li { 
+            color: #555; 
+            margin: 10px 0; 
+        }
+
+        ul { 
+            padding-left: 25px; 
+        }
+
+        li {
+            margin-bottom: 8px;
+            position: relative;
+        }
+
+        li:before {
+            content: "•";
+            color: var(--accent);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+
+        .highlight {
+            background: linear-gradient(to right, #f3e5f5, #f1f8e9);
+            border-left: 4px solid var(--accent);
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 6px;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.05);
+        }
+
+        .highlight strong {
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+
+        footer {
+            text-align: center;
+            margin: 50px 0 20px;
+            color: var(--gray);
+            font-size: .9rem;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+
+        a { 
+            color: var(--secondary); 
+            text-decoration: none;
+            transition: color 0.2s;
+            font-weight: 500;
+        }
+        
+        a:hover {
+            color: var(--accent);
+            text-decoration: underline;
+        }
+
+        .section {
+            margin-bottom: 35px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-left: 10px;
+            vertical-align: middle;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 15px;
+        }
+        
+        .contact-item {
+            background: #f9f9f9;
+            padding: 12px 20px;
+            border-radius: var(--radius);
+            flex: 1;
+            min-width: 200px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            main {
+                padding: 25px;
+            }
+            
+            header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="container header-content">
+        <div class="app-icon">
+            <i class="fas fa-keyboard"></i>
+        </div>
+        <h1><span>TYPESPEED</span> Privacy Policy</h1>
+        <p>Official Privacy Policy for Typespeed Typing Application</p>
+    </div>
+</header>
+
+<div class="container">
+<main>
+
+    <!-- 🔒 REQUIRED IDENTITY STATEMENT -->
+    <section class="section">
+        <h2>Privacy Policy <span class="badge">Updated</span></h2>
+        <p><strong>Effective Date:</strong> January 2026</p>
+
+        <p>
+            This Privacy Policy applies to the mobile application
+            <strong>Typespeed</strong>, available on Google Play Store, developed and published by
+            <strong>Abwaoke038</strong>.
+        </p>
+    </section>
+
+    <div class="highlight">
+        <p>
+            <strong>No Data Collection Philosophy:</strong>
+            Typespeed is designed as a completely offline typing practice application. 
+            We do not collect, store, transmit, or share any personal data. All your typing 
+            practice happens locally on your device.
+        </p>
+    </div>
+
+    <!-- 📱 APP SCOPE -->
+    <section class="section">
+        <h3>Application Information</h3>
+        <ul>
+            <li><strong>Typespeed</strong> – Typing speed test and practice application</li>
+            <li><strong>Platform:</strong> Android (Google Play Store)</li>
+            <li><strong>Category:</strong> Education / Tools</li>
+            <li><strong>Core Function:</strong> Measure and improve typing speed and accuracy</li>
+        </ul>
+    </section>
+
+    <!-- 📊 DATA PRACTICES -->
+    <section class="section">
+        <h3>Data Collection & Usage</h3>
+        <p>Typespeed operates with these privacy principles:</p>
+        <ul>
+            <li><strong>No Personal Data:</strong> We don't collect names, emails, phone numbers, or any identifiers</li>
+            <li><strong>Local Processing Only:</strong> All typing tests, results, and statistics are processed and stored locally on your device</li>
+            <li><strong>No Internet Transmission:</strong> No data is sent to external servers or third parties</li>
+            <li><strong>No Tracking:</strong> We don't use analytics, cookies, or tracking technologies</li>
+            <li><strong>No Ads:</strong> The application is completely ad-free</li>
+            <li><strong>Optional Data Storage:</strong> Typing results and progress are stored locally on your device only if you choose to save them</li>
+        </ul>
+    </section>
+
+    <!-- 🔐 PERMISSIONS -->
+    <section class="section">
+        <h3>Application Permissions</h3>
+        <p>Typespeed may request the following permissions:</p>
+        <ul>
+            <li><strong>Storage (Optional):</strong> Only if you choose to export typing results or import custom text for practice</li>
+            <li><strong>Internet (Disabled):</strong> The app doesn't require internet access for core functionality</li>
+        </ul>
+        <p>All permissions are optional and clearly explained when requested.</p>
+    </section>
+
+    <!-- 🏢 DEVELOPER INFO (MANDATORY) -->
+    <section class="section">
+        <h3>Developer Information</h3>
+        <div class="contact-info">
+            <div class="contact-item">
+                <strong>App Name:</strong><br>Typespeed
+            </div>
+            <div class="contact-item">
+                <strong>Developer:</strong><br>Abwaoke038
+            </div>
+            <div class="contact-item">
+                <strong>Contact Email:</strong><br>abwaoke038.dev@gmail.com
+            </div>
+            <div class="contact-item">
+                <strong>Publisher:</strong><br>Independent Developer
+            </div>
+        </div>
+    </section>
+
+    <!-- 🔄 POLICY UPDATES -->
+    <section class="section">
+        <h3>Policy Updates</h3>
+        <p>
+            We may update this Privacy Policy occasionally. Any changes will be reflected 
+            with an updated "Effective Date" at the top of this policy. Continued use of 
+            Typespeed after changes constitutes acceptance of the updated policy.
+        </p>
+    </section>
+
+    <!-- 📩 CONTACT -->
+    <section class="section">
+        <h3>Contact & Support</h3>
+        <p>
+            For privacy-related questions, support, or feedback about Typespeed:
+        </p>
+        <ul>
+            <li><strong>Email:</strong> <a href="mailto:abwaoke038.dev@gmail.com">abwaoke038.dev@gmail.com</a></li>
+            <li><strong>Response Time:</strong> We aim to respond within 3-5 business days</li>
+        </ul>
+    </section>
+
+</main>
+
+<footer>
+    <p>© <span id="year"></span> Abwaoke038. All rights reserved.</p>
+    <p>Typespeed is fully compliant with Google Play Store privacy policies and requirements.</p>
+</footer>
+</div>
+
+<script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+    
+    // Add smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            if(targetId === '#') return;
+            
+            const targetElement = document.querySelector(targetId);
+            if(targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 20,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
