@@ -3,451 +3,137 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy - Our App</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Text Converter - Privacy Policy & Support</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        :root {
+            --primary-color: #2563eb;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --bg-gray: #f9fafb;
         }
 
         body {
-            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
-            color: #333;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             line-height: 1.6;
-            min-height: 100vh;
-            padding: 20px;
+            color: var(--text-dark);
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-gray);
+        }
+
+        header {
+            background: white;
+            padding: 2rem 1rem;
+            text-align: center;
+            border-bottom: 1px solid #e5e7eb;
         }
 
         .container {
-            max-width: 1000px;
-            margin: 0 auto;
+            max-width: 800px;
+            margin: 2rem auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
         }
 
-        .policy-card {
-            background-color: white;
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-            overflow: hidden;
-            margin: 30px 0;
+        h1, h2 { color: var(--primary-color); }
+        
+        .policy-section {
+            margin-bottom: 2rem;
         }
 
-        .header {
-            background: linear-gradient(to right, #4a00e0, #8e2de2);
-            color: white;
-            padding: 30px;
+        .highlight {
+            background: #eff6ff;
+            padding: 1rem;
+            border-left: 4px solid var(--primary-color);
+            margin: 1rem 0;
+        }
+
+        footer {
             text-align: center;
+            padding: 2rem;
+            font-size: 0.875rem;
+            color: var(--text-light);
         }
 
-        .header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
+        .nav-links {
+            margin-top: 1rem;
         }
 
-        .header h1 i {
-            font-size: 2.2rem;
-        }
-
-        .header p {
-            opacity: 0.9;
-            font-size: 1.1rem;
-        }
-
-        .policy-content {
-            padding: 40px;
-            max-height: 70vh;
-            overflow-y: auto;
-        }
-
-        .section {
-            margin-bottom: 35px;
-            padding-bottom: 25px;
-            border-bottom: 1px solid #eee;
-        }
-
-        .section:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
-        }
-
-        .section-title {
-            color: #4a00e0;
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .section-title i {
-            font-size: 1.3rem;
-            width: 30px;
-        }
-
-        .section-content {
-            color: #555;
-            margin-left: 42px;
-        }
-
-        .section-content p {
-            margin-bottom: 15px;
-        }
-
-        .section-content ul {
-            margin-left: 20px;
-            margin-bottom: 15px;
-        }
-
-        .section-content li {
-            margin-bottom: 8px;
-        }
-
-        .highlight-box {
-            background-color: #f8f9ff;
-            border-left: 4px solid #4a00e0;
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 0 8px 8px 0;
-        }
-
-        .highlight-box p {
-            margin-bottom: 0;
-        }
-
-        .footer {
-            background-color: #f8f9ff;
-            padding: 25px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-top: 1px solid #eee;
-        }
-
-        .footer p {
-            color: #666;
-            font-size: 0.95rem;
-        }
-
-        .buttons {
-            display: flex;
-            gap: 15px;
-        }
-
-        .btn {
-            padding: 12px 24px;
-            border-radius: 50px;
-            border: none;
-            font-weight: 600;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: all 0.3s ease;
-        }
-
-        .btn-accept {
-            background-color: #4a00e0;
-            color: white;
-        }
-
-        .btn-decline {
-            background-color: #f1f3f9;
-            color: #4a00e0;
-        }
-
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 7px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .btn-accept:hover {
-            background-color: #3800b0;
-        }
-
-        .btn-decline:hover {
-            background-color: #e6e9f5;
-        }
-
-        /* Responsive design */
-        @media (max-width: 768px) {
-            .policy-content {
-                padding: 25px;
-                max-height: 60vh;
-            }
-            
-            .header h1 {
-                font-size: 2rem;
-            }
-            
-            .section-title {
-                font-size: 1.3rem;
-            }
-            
-            .footer {
-                flex-direction: column;
-                gap: 20px;
-                text-align: center;
-            }
-            
-            .buttons {
-                width: 100%;
-                flex-direction: column;
-            }
-            
-            .btn {
-                width: 100%;
-                justify-content: center;
-            }
-        }
-
-        /* Scrollbar styling */
-        .policy-content::-webkit-scrollbar {
-            width: 8px;
-        }
-        
-        .policy-content::-webkit-scrollbar-track {
-            background: #f1f1f1;
-            border-radius: 10px;
-        }
-        
-        .policy-content::-webkit-scrollbar-thumb {
-            background: #c1c1c1;
-            border-radius: 10px;
-        }
-        
-        .policy-content::-webkit-scrollbar-thumb:hover {
-            background: #a1a1a1;
-        }
-
-        /* Animation */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .policy-card {
-            animation: fadeIn 0.8s ease-out;
-        }
-
-        .no-data-badge {
-            display: inline-block;
-            background-color: #e6f7ef;
-            color: #00a86b;
-            padding: 6px 15px;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            margin-bottom: 15px;
+        .nav-links a {
+            margin: 0 10px;
+            color: var(--primary-color);
+            text-decoration: none;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="policy-card">
-            <div class="header">
-                <h1><i class="fas fa-user-shield"></i> Privacy Policy</h1>
-                <p>Last updated: Jan 1, 2025</p>
-            </div>
-            
-            <div class="policy-content">
-                <div class="highlight-box">
-                    <div class="no-data-badge">
-                        <i class="fas fa-check-circle"></i> NO DATA COLLECTED
-                    </div>
-                    <p>Our app <strong>does not collect, store, or share any personal information</strong> from our users. We are committed to protecting your privacy and ensuring a safe user experience.</p>
-                </div>
-                
-                <div class="section">
-                    <h2 class="section-title"><i class="fas fa-info-circle"></i> Introduction</h2>
-                    <div class="section-content">
-                        <p>This Privacy Policy explains how our application handles your information. We want to be transparent about our practices so you can feel confident using our App.</p>
-                        <p>By using our App, you agree to the terms outlined in this Privacy Policy.</p>
-                    </div>
-                </div>
-                
-                <div class="section">
-                    <h2 class="section-title"><i class="fas fa-database"></i> Information We Do NOT Collect</h2>
-                    <div class="section-content">
-                        <p>Our App operates with a strict no-data-collection policy:</p>
-                        <ul>
-                            <li><strong>No Personal Information:</strong> We do not collect names, email addresses, phone numbers, or any other personally identifiable information.</li>
-                            <li><strong>No Usage Data:</strong> We do not track how you use the App, what features you access, or how long you spend in the App.</li>
-                            <li><strong>No Device Information:</strong> We do not collect device identifiers, IP addresses, or any other device-specific information.</li>
-                            <li><strong>No Location Data:</strong> We do not collect, store, or track your geographic location.</li>
-                            <li><strong>No Payment Information:</strong> Our App does not process payments and therefore does not collect any financial information.</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="section">
-                    <h2 class="section-title"><i class="fas fa-shield-alt"></i> Compliance with Laws & Policies</h2>
-                    <div class="section-content">
-                        <p>Our Privacy Policy is designed to comply with:</p>
-                        <ul>
-                            <li><strong>GDPR (General Data Protection Regulation):</strong> Even though we don't collect data, we respect the principles of GDPR including transparency, data minimization, and user rights.</li>
-                            <li><strong>CCPA (California Consumer Privacy Act):</strong> California residents have specific privacy rights which we respect by not collecting any personal information.</li>
-                            <li><strong>COPPA (Children's Online Privacy Protection Act):</strong> Our App is safe for children as we do not collect any data from any users, regardless of age.</li>
-                            <li><strong>Google Play Store Policies:</strong> We comply with Google's User Data policies by clearly disclosing our no-data-collection practices.</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="section">
-                    <h2 class="section-title"><i class="fas fa-external-link-alt"></i> Third-Party Services</h2>
-                    <div class="section-content">
-                        <p>Our App does not integrate with any third-party services that collect user data. The App functions entirely offline and does not connect to external servers or analytics platforms.</p>
-                        <p>If we ever decide to incorporate third-party services in the future, we will update this Privacy Policy and obtain user consent where required by law.</p>
-                    </div>
-                </div>
-                
-                <div class="section">
-                    <h2 class="section-title"><i class="fas fa-user-check"></i> Your Rights</h2>
-                    <div class="section-content">
-                        <p>Even though we don't collect your data, we want you to know your privacy rights:</p>
-                        <ul>
-                            <li><strong>Right to Access:</strong> You can request confirmation that we are not collecting your data.</li>
-                            <li><strong>Right to Deletion:</strong> Since we don't store your data, there's nothing to delete.</li>
-                            <li><strong>Right to Opt-Out:</strong> You can stop using the App at any time, and no data will be retained.</li>
-                            <li><strong>Right to Notification:</strong> We will notify users if our data practices change in the future.</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="section">
-                    <h2 class="section-title"><i class="fas fa-envelope"></i> Contact Us</h2>
-                    <div class="section-content">
-                        <p>If you have any questions about this Privacy Policy or our data practices, please contact us:</p>
-                        <p>Email: phoniegiwme@gmail.com<br>
-                        Website: www.app.eduniapps.com/privacy</p>
-                        <p>We may update this Privacy Policy from time to time. We will notify users of any material changes by updating the "Last updated" date at the top of this policy.</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="footer">
-                <p>By using our App, you acknowledge that you have read and understood this Privacy Policy.</p>
-                <div class="buttons">
-                    <button class="btn btn-decline" id="declineBtn">
-                        <i class="fas fa-times"></i> Decline
-                    </button>
-                    <button class="btn btn-accept" id="acceptBtn">
-                        <i class="fas fa-check"></i> Accept Policy
-                    </button>
-                </div>
-            </div>
-        </div>
+
+<header>
+    <h1>Text Converter</h1>
+    <p>Efficiently convert and format your text on the go.</p>
+    <nav class="nav-links">
+        <a href="#privacy">Privacy Policy</a>
+        <a href="#terms">Terms of Service</a>
+        <a href="mailto:support@eduniapps.com">Contact Support</a>
+    </nav>
+</header>
+
+<div class="container" id="privacy">
+    <h2>Privacy Policy</h2>
+    <p>Last Updated: January 2026</p>
+
+    <div class="highlight">
+        <strong>Important Note:</strong> This Privacy Policy applies to the <strong>Text Converter</strong> mobile application, developed and maintained by <strong>EduniApps</strong>.
     </div>
 
-    <script>
-        // Handle button clicks
-        document.getElementById('acceptBtn').addEventListener('click', function() {
-            showMessage('Thank you for accepting our Privacy Policy!', 'success');
-            
-            // In a real app, you would save the acceptance status here
-            localStorage.setItem('privacyPolicyAccepted', 'true');
-            
-            // Simulate redirect after acceptance
-            setTimeout(() => {
-               
-            }, 1500);
-        });
+    <section class="policy-section">
+        <h3>1. Information We Collect</h3>
+        <p><strong>Text Converter</strong> is designed to respect your privacy. We do not collect, store, or share any personal data or the text content you process within the app. All text conversions happen locally on your device.</p>
+    </section>
 
-        document.getElementById('declineBtn').addEventListener('click', function() {
-            showMessage('You must accept the Privacy Policy to use this app.', 'warning');
-            
-            // In a real app, you might exit the app or show an exit screen
-            setTimeout(() => {
-                document.querySelector('.policy-card').style.transform = 'translateX(100px)';
-                document.querySelector('.policy-card').style.opacity = '0.7';
-            }, 500);
-        });
+    <section class="policy-section">
+        <h3>2. Permissions</h3>
+        <p>The app may request the following permissions:</p>
+        <ul>
+            <li><strong>Storage/Clipboard:</strong> To allow you to copy and paste text for conversion.</li>
+            <li><strong>Internet:</strong> Used only for displaying non-personalized ads or checking for updates.</li>
+        </ul>
+    </section>
 
-        function showMessage(message, type) {
-            // Remove existing message if any
-            const existingMessage = document.querySelector('.message-toast');
-            if (existingMessage) {
-                existingMessage.remove();
-            }
-            
-            // Create message element
-            const messageEl = document.createElement('div');
-            messageEl.className = `message-toast ${type}`;
-            messageEl.innerHTML = `
-                <span>${message}</span>
-                <i class="fas fa-times close-message"></i>
-            `;
-            
-            // Style the message
-            messageEl.style.cssText = `
-                position: fixed;
-                bottom: 30px;
-                left: 50%;
-                transform: translateX(-50%);
-                background-color: ${type === 'success' ? '#4CAF50' : '#FF9800'};
-                color: white;
-                padding: 15px 25px;
-                border-radius: 50px;
-                display: flex;
-                align-items: center;
-                gap: 15px;
-                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-                z-index: 1000;
-                animation: fadeIn 0.3s ease-out;
-            `;
-            
-            // Add close button functionality
-            const closeBtn = messageEl.querySelector('.close-message');
-            closeBtn.addEventListener('click', function() {
-                messageEl.remove();
+    <section class="policy-section">
+        <h3>3. Third-Party Services</h3>
+        <p>We may use third-party services like Google AdMob or Firebase Analytics. These providers may collect information used to identify your device type and app usage statistics to help us improve the app experience.</p>
+    </section>
+
+    <section class="policy-section">
+        <h3>4. Data Security</h3>
+        <p>Since <strong>Text Converter</strong> does not upload your text to any servers, your data remains secure on your own hardware.</p>
+    </section>
+
+    <section class="policy-section">
+        <h3>5. Contact Us</h3>
+        <p>If you have any questions regarding this policy or the <strong>Text Converter</strong> app, please contact <strong>EduniApps</strong> at:</p>
+        <p>Email: <a href="mailto:support@eduniapps.com">support@eduniapps.com</a></p>
+    </section>
+</div>
+
+<footer>
+    <p>&copy; 2026 EduniApps. All rights reserved.</p>
+</footer>
+
+<script>
+    // Smooth scrolling for navigation
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
             });
-            
-            document.body.appendChild(messageEl);
-            
-            // Auto-remove after 5 seconds
-            setTimeout(() => {
-                if (messageEl.parentNode) {
-                    messageEl.style.opacity = '0';
-                    messageEl.style.transition = 'opacity 0.5s';
-                    setTimeout(() => {
-                        if (messageEl.parentNode) messageEl.remove();
-                    }, 500);
-                }
-            }, 5000);
-        }
-
-        // Check if policy was already accepted
-        window.addEventListener('DOMContentLoaded', function() {
-            const accepted = localStorage.getItem('privacyPolicyAccepted');
-            if (accepted === 'true') {
-            
-                window.location.href = 'https://app.eduniapps.com';
-            }
         });
+    });
+</script>
 
-        // Add some interactivity to section titles
-        document.querySelectorAll('.section-title').forEach(title => {
-            title.addEventListener('click', function() {
-                const content = this.nextElementSibling;
-                if (content.style.display === 'none') {
-                    content.style.display = 'block';
-                    this.querySelector('i').style.transform = 'rotate(0deg)';
-                } else {
-                    content.style.display = 'none';
-                    this.querySelector('i').style.transform = 'rotate(-90deg)';
-                }
-            });
-            
-            // Add cursor pointer to indicate clickable
-            title.style.cursor = 'pointer';
-            title.querySelector('i').style.transition = 'transform 0.3s';
-        });
-    </script>
 </body>
 </html>
