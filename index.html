@@ -1,692 +1,1148 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DJOURNAL - Terms & Privacy Policy</title>
-    <link rel="icon" type="image/x-icon" href="https://img.icons8.com/color/96/000000/book.png">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        body {
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            color: #333;
-            line-height: 1.6;
-            min-height: 100vh;
-            padding: 20px;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            background-color: white;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-        }
-        
-        header {
-            background: linear-gradient(to right, #4A00E0, #8E2DE2);
-            color: white;
-            padding: 40px 30px;
-            text-align: center;
-            position: relative;
-        }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
-        }
-        
-        .logo-icon {
-            font-size: 3rem;
-            margin-right: 15px;
-            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));
-        }
-        
-        h1 {
-            font-size: 2.8rem;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-            margin-bottom: 10px;
-        }
-        
-        .subtitle {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            margin-bottom: 25px;
-        }
-        
-        .developer-info {
-            background-color: rgba(255, 255, 255, 0.15);
-            display: inline-block;
-            padding: 12px 25px;
-            border-radius: 50px;
-            font-size: 1rem;
-            margin-top: 15px;
-            backdrop-filter: blur(10px);
-        }
-        
-        .nav-tabs {
-            display: flex;
-            background-color: #f1f5f9;
-            border-bottom: 1px solid #e2e8f0;
-            overflow-x: auto;
-        }
-        
-        .tab-btn {
-            padding: 18px 30px;
-            background: none;
-            border: none;
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #64748b;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            white-space: nowrap;
-            border-bottom: 3px solid transparent;
-        }
-        
-        .tab-btn:hover {
-            color: #4A00E0;
-            background-color: rgba(74, 0, 224, 0.05);
-        }
-        
-        .tab-btn.active {
-            color: #4A00E0;
-            border-bottom: 3px solid #4A00E0;
-            background-color: white;
-        }
-        
-        .content {
-            padding: 40px;
-            min-height: 600px;
-        }
-        
-        .tab-content {
-            display: none;
-            animation: fadeIn 0.5s ease;
-        }
-        
-        .tab-content.active {
-            display: block;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        h2 {
-            color: #4A00E0;
-            font-size: 2rem;
-            margin-bottom: 25px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid #f1f5f9;
-        }
-        
-        h3 {
-            color: #5b21b6;
-            font-size: 1.5rem;
-            margin: 30px 0 15px;
-        }
-        
-        p {
-            margin-bottom: 18px;
-            font-size: 1.05rem;
-            color: #475569;
-        }
-        
-        ul, ol {
-            margin-left: 25px;
-            margin-bottom: 25px;
-        }
-        
-        li {
-            margin-bottom: 12px;
-            color: #475569;
-        }
-        
-        .highlight-box {
-            background-color: #f8fafc;
-            border-left: 4px solid #4A00E0;
-            padding: 20px 25px;
-            margin: 25px 0;
-            border-radius: 0 8px 8px 0;
-        }
-        
-        .contact-card {
-            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-            border-radius: 15px;
-            padding: 30px;
-            margin: 40px 0;
-            text-align: center;
-            border: 1px solid #cbd5e1;
-        }
-        
-        .contact-card h3 {
-            color: #4A00E0;
-            margin-top: 0;
-        }
-        
-        .email-link {
-            display: inline-block;
-            background-color: #4A00E0;
-            color: white;
-            padding: 12px 25px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            margin-top: 15px;
-            transition: all 0.3s ease;
-        }
-        
-        .email-link:hover {
-            background-color: #3800a8;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(74, 0, 224, 0.3);
-        }
-        
-        .last-updated {
-            text-align: center;
-            padding: 20px;
-            color: #64748b;
-            font-size: 0.95rem;
-            border-top: 1px solid #e2e8f0;
-            background-color: #f8fafc;
-            border-radius: 0 0 20px 20px;
-        }
-        
-        .app-info {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
-            margin: 30px 0;
-        }
-        
-        .app-feature {
-            flex: 1;
-            min-width: 250px;
-            background-color: #f8fafc;
-            padding: 25px;
-            border-radius: 12px;
-            border: 1px solid #e2e8f0;
-        }
-        
-        .feature-icon {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            color: #4A00E0;
-        }
-        
-        .app-feature h4 {
-            color: #4A00E0;
-            margin-bottom: 10px;
-            font-size: 1.3rem;
-        }
-        
-        footer {
-            text-align: center;
-            padding: 25px;
-            color: #64748b;
-            font-size: 0.9rem;
-            margin-top: 40px;
-            border-top: 1px solid #e2e8f0;
-        }
-        
-        @media (max-width: 768px) {
-            .container {
-                border-radius: 15px;
-            }
-            
-            header {
-                padding: 30px 20px;
-            }
-            
-            h1 {
-                font-size: 2.2rem;
-            }
-            
-            .nav-tabs {
-                flex-wrap: wrap;
-            }
-            
-            .tab-btn {
-                padding: 15px 20px;
-                flex: 1;
-                min-width: 140px;
-            }
-            
-            .content {
-                padding: 30px 20px;
-            }
-            
-            h2 {
-                font-size: 1.8rem;
-            }
-        }
-        
-        .print-btn {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background-color: #4A00E0;
-            color: white;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            cursor: pointer;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            transition: all 0.3s ease;
-            z-index: 100;
-            border: none;
-        }
-        
-        .print-btn:hover {
-            background-color: #3800a8;
-            transform: scale(1.1);
-        }
-        
-        .back-to-top {
-            position: fixed;
-            bottom: 100px;
-            right: 30px;
-            background-color: #8E2DE2;
-            color: white;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            cursor: pointer;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            transition: all 0.3s ease;
-            z-index: 100;
-            border: none;
-            opacity: 0;
-            visibility: hidden;
-        }
-        
-        .back-to-top.show {
-            opacity: 1;
-            visibility: visible;
-        }
-        
-        .back-to-top:hover {
-            background-color: #7a1dc9;
-            transform: scale(1.1);
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index, follow" />
+  <meta name="description" content="DJOURNAL – Official Privacy Policy and Terms of Service by Kemboi254. Google Play compliant." />
+  <title>DJOURNAL – Privacy Policy & Terms of Service</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --ink:       #0d1117;
+      --paper:     #fafaf8;
+      --cream:     #f4f1eb;
+      --gold:      #c9a84c;
+      --gold-lt:   #e8d49b;
+      --muted:     #6b7280;
+      --rule:      #e5e0d5;
+      --accent:    #1a3a5c;
+      --accent-lt: #eef3f8;
+      --red:       #c0392b;
+      --green:     #1a7a4a;
+      --radius:    4px;
+      --max:       860px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 400;
+      line-height: 1.75;
+      min-height: 100vh;
+    }
+
+    /* ─── TOP MASTHEAD ─────────────────────────────────── */
+    .masthead {
+      background: var(--ink);
+      color: var(--paper);
+      text-align: center;
+      padding: 56px 24px 48px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .masthead::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 39px,
+        rgba(201,168,76,.07) 40px
+      );
+      pointer-events: none;
+    }
+
+    .masthead-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: .72rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 18px;
+    }
+
+    .masthead h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.6rem, 6vw, 4rem);
+      font-weight: 900;
+      letter-spacing: -.02em;
+      line-height: 1.05;
+      margin-bottom: 10px;
+    }
+
+    .masthead h1 span { color: var(--gold); }
+
+    .masthead-sub {
+      font-size: .95rem;
+      color: rgba(250,250,248,.55);
+      margin-bottom: 32px;
+      letter-spacing: .01em;
+    }
+
+    .masthead-meta {
+      display: inline-flex;
+      flex-wrap: wrap;
+      gap: 12px 24px;
+      justify-content: center;
+      border-top: 1px solid rgba(201,168,76,.25);
+      padding-top: 22px;
+      font-family: 'DM Mono', monospace;
+      font-size: .72rem;
+      color: rgba(250,250,248,.6);
+      letter-spacing: .06em;
+    }
+
+    .masthead-meta span { color: var(--gold-lt); }
+
+    /* ─── BADGE ROW ────────────────────────────────────── */
+    .badge-row {
+      background: var(--gold);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 24px;
+      font-family: 'DM Mono', monospace;
+      font-size: .72rem;
+      font-weight: 500;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+
+    .badge-row svg { flex-shrink: 0; }
+
+    /* ─── NAV ──────────────────────────────────────────── */
+    .sticky-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(250,250,248,.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--rule);
+      display: flex;
+      justify-content: center;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .sticky-nav::-webkit-scrollbar { display: none; }
+
+    .nav-inner {
+      display: flex;
+      gap: 0;
+      max-width: var(--max);
+      width: 100%;
+    }
+
+    .nav-btn {
+      flex: 1;
+      min-width: 130px;
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      padding: 14px 10px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: .82rem;
+      font-weight: 600;
+      letter-spacing: .02em;
+      color: var(--muted);
+      cursor: pointer;
+      transition: color .2s, border-color .2s;
+      white-space: nowrap;
+      text-align: center;
+    }
+
+    .nav-btn:hover { color: var(--accent); }
+    .nav-btn.active {
+      color: var(--accent);
+      border-bottom-color: var(--gold);
+    }
+
+    /* ─── MAIN LAYOUT ──────────────────────────────────── */
+    .shell {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+
+    .tab-panel { display: none; animation: fadeUp .35s ease; }
+    .tab-panel.active { display: block; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ─── SECTION HEADER ───────────────────────────────── */
+    .section-head {
+      padding: 52px 0 36px;
+      border-bottom: 1.5px solid var(--rule);
+      margin-bottom: 36px;
+    }
+
+    .section-head .eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: .68rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+
+    .section-head h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.4rem);
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--ink);
+    }
+
+    .effective-date {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 14px;
+      background: var(--cream);
+      border: 1px solid var(--rule);
+      border-radius: 2px;
+      padding: 5px 12px;
+      font-family: 'DM Mono', monospace;
+      font-size: .7rem;
+      letter-spacing: .1em;
+      color: var(--muted);
+    }
+
+    /* ─── TYPOGRAPHY ───────────────────────────────────── */
+    .prose h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin: 40px 0 12px;
+      padding-left: 14px;
+      border-left: 3px solid var(--gold);
+    }
+
+    .prose h4 {
+      font-size: .85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--muted);
+      margin: 24px 0 8px;
+    }
+
+    .prose p {
+      font-size: .97rem;
+      color: #374151;
+      margin-bottom: 16px;
+    }
+
+    .prose ul, .prose ol {
+      margin: 0 0 18px 0;
+      padding-left: 0;
+      list-style: none;
+    }
+
+    .prose ul li, .prose ol li {
+      position: relative;
+      padding-left: 22px;
+      font-size: .95rem;
+      color: #374151;
+      margin-bottom: 8px;
+    }
+
+    .prose ul li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+      font-weight: 700;
+    }
+
+    .prose ol { counter-reset: li; }
+    .prose ol li::before {
+      counter-increment: li;
+      content: counter(li, decimal-leading-zero);
+      position: absolute;
+      left: 0;
+      font-family: 'DM Mono', monospace;
+      font-size: .72rem;
+      color: var(--gold);
+      top: 3px;
+    }
+
+    /* ─── CALLOUT BOXES ────────────────────────────────── */
+    .callout {
+      border-radius: var(--radius);
+      padding: 18px 22px;
+      margin: 24px 0;
+      font-size: .92rem;
+      line-height: 1.65;
+    }
+
+    .callout-compliance {
+      background: #fff8e6;
+      border: 1px solid #f0d080;
+      border-left: 4px solid var(--gold);
+    }
+
+    .callout-privacy {
+      background: #eef7f1;
+      border: 1px solid #a8d5b5;
+      border-left: 4px solid var(--green);
+    }
+
+    .callout-warning {
+      background: #fdf2f2;
+      border: 1px solid #e8b4b4;
+      border-left: 4px solid var(--red);
+    }
+
+    .callout-info {
+      background: var(--accent-lt);
+      border: 1px solid #c0d3e8;
+      border-left: 4px solid var(--accent);
+    }
+
+    .callout strong {
+      display: block;
+      font-size: .72rem;
+      font-family: 'DM Mono', monospace;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .callout-compliance strong { color: #a07a10; }
+    .callout-privacy strong   { color: var(--green); }
+    .callout-warning strong   { color: var(--red); }
+    .callout-info strong      { color: var(--accent); }
+
+    /* ─── TABLE ────────────────────────────────────────── */
+    .policy-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: .88rem;
+    }
+
+    .policy-table th {
+      background: var(--ink);
+      color: var(--gold);
+      font-family: 'DM Mono', monospace;
+      font-size: .68rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      padding: 10px 14px;
+      text-align: left;
+    }
+
+    .policy-table td {
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--rule);
+      vertical-align: top;
+      color: #374151;
+    }
+
+    .policy-table tr:last-child td { border-bottom: none; }
+    .policy-table tr:nth-child(even) td { background: var(--cream); }
+
+    .pill {
+      display: inline-block;
+      padding: 2px 9px;
+      border-radius: 20px;
+      font-family: 'DM Mono', monospace;
+      font-size: .68rem;
+      font-weight: 500;
+      letter-spacing: .06em;
+    }
+
+    .pill-no   { background: #eef7f1; color: var(--green); border: 1px solid #a8d5b5; }
+    .pill-yes  { background: #fff8e6; color: #a07a10; border: 1px solid #f0d080; }
+    .pill-anon { background: var(--accent-lt); color: var(--accent); border: 1px solid #c0d3e8; }
+
+    /* ─── FEATURE GRID ─────────────────────────────────── */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin: 28px 0;
+    }
+
+    .feature-card {
+      background: var(--cream);
+      border: 1px solid var(--rule);
+      border-top: 3px solid var(--gold);
+      border-radius: var(--radius);
+      padding: 22px 18px;
+    }
+
+    .feature-card .icon {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+
+    .feature-card h4 {
+      font-family: 'DM Sans', sans-serif;
+      font-size: .88rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+
+    .feature-card p {
+      font-size: .82rem;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    /* ─── CONTACT CARD ─────────────────────────────────── */
+    .contact-hero {
+      background: var(--ink);
+      color: var(--paper);
+      border-radius: var(--radius);
+      padding: 40px 36px;
+      margin: 32px 0;
+      text-align: center;
+    }
+
+    .contact-hero .tag {
+      font-family: 'DM Mono', monospace;
+      font-size: .68rem;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+
+    .contact-hero h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+      border: none;
+      padding: 0;
+      color: var(--paper);
+    }
+
+    .contact-hero .role { font-size: .85rem; color: rgba(250,250,248,.5); margin-bottom: 28px; }
+
+    .email-btn {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--ink);
+      padding: 13px 28px;
+      border-radius: 2px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: .9rem;
+      letter-spacing: .03em;
+      transition: background .2s, transform .2s;
+    }
+
+    .email-btn:hover { background: var(--gold-lt); transform: translateY(-2px); }
+
+    /* ─── DIVIDER ──────────────────────────────────────── */
+    .rule-divider {
+      border: none;
+      border-top: 1px solid var(--rule);
+      margin: 36px 0;
+    }
+
+    /* ─── FOOTER ───────────────────────────────────────── */
+    footer {
+      background: var(--ink);
+      color: rgba(250,250,248,.4);
+      text-align: center;
+      padding: 32px 24px;
+      font-size: .78rem;
+      font-family: 'DM Mono', monospace;
+      letter-spacing: .04em;
+      line-height: 1.9;
+    }
+
+    footer a { color: var(--gold); text-decoration: none; }
+    footer strong { color: rgba(250,250,248,.75); }
+
+    /* ─── FLOAT ACTIONS ────────────────────────────────── */
+    .fab-group {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      z-index: 200;
+    }
+
+    .fab {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      box-shadow: 0 4px 14px rgba(0,0,0,.22);
+      transition: transform .2s, opacity .2s;
+    }
+
+    .fab-print { background: var(--ink); color: var(--gold); }
+    .fab-top   { background: var(--gold); color: var(--ink); opacity: 0; pointer-events: none; }
+    .fab-top.show { opacity: 1; pointer-events: auto; }
+    .fab:hover { transform: scale(1.08); }
+
+    @media (max-width: 600px) {
+      .masthead { padding: 40px 18px 36px; }
+      .shell { padding: 0 16px 60px; }
+      .section-head { padding: 36px 0 24px; }
+      .contact-hero { padding: 28px 20px; }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <div class="logo">
-                <div class="logo-icon">📔</div>
-                <div>
-                    <h1>DJOURNAL</h1>
-                    <div class="subtitle">Personal Journaling App - Terms of Service & Privacy Policy</div>
-                </div>
-            </div>
-            <div class="developer-info">
-                <strong>Developer:</strong> RodneyDev (Rodney Swain) | <strong>Email:</strong> rodieswain@gmail.com
-            </div>
-        </header>
-        
-        <div class="nav-tabs">
-            <button class="tab-btn active" data-tab="terms">Terms of Service</button>
-            <button class="tab-btn" data-tab="privacy">Privacy Policy</button>
-            <button class="tab-btn" data-tab="app">About DJOURNAL</button>
-            <button class="tab-btn" data-tab="contact">Contact Developer</button>
-        </div>
-        
-        <div class="content">
-            <!-- Terms of Service Tab -->
-            <div id="terms" class="tab-content active">
-                <h2>Terms of Service</h2>
-                <div class="last-updated">Last Updated: February 7, 2026</div>
-                
-                <p><strong>This Terms of Service applies to the DJOURNAL mobile application, published on Google Play by RodneyDev (Rodney Swain).</strong></p>
-                
-                <h3>1. Acceptance of Terms</h3>
-                <p>By downloading, installing, or using the DJOURNAL app ("App"), you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use the App.</p>
-                
-                <h3>2. Description of Service</h3>
-                <p>DJOURNAL is a personal journaling application that allows users to:</p>
-                <ul>
-                    <li>Write daily entries about their experiences</li>
-                    <li>Store personal reflections and memories</li>
-                    <li>Maintain private digital journal content</li>
-                    <li>Organize thoughts in a simple, intuitive interface</li>
-                </ul>
-                
-                <h3>3. User Accounts and Data</h3>
-                <ul>
-                    <li>You are responsible for maintaining the confidentiality of your device and app access</li>
-                    <li>All journal entries and personal data are stored locally on your device</li>
-                    <li>The developer does not access, read, or share your journal content</li>
-                    <li>You retain all rights to your personal content</li>
-                </ul>
-                
-                <div class="highlight-box">
-                    <strong>Important:</strong> DJOURNAL stores all data locally on your device. The developer cannot access, recover, or restore lost journal entries. We recommend regular device backups.
-                </div>
-                
-                <h3>4. Acceptable Use</h3>
-                <p>You agree not to:</p>
-                <ul>
-                    <li>Use the App for any unlawful purpose</li>
-                    <li>Attempt to reverse engineer or modify the App</li>
-                    <li>Use the App to harass, threaten, or harm others</li>
-                    <li>Post content that infringes on others' rights</li>
-                </ul>
-                
-                <h3>5. Intellectual Property</h3>
-                <ul>
-                    <li>The App, including its design, code, and features, is owned by RodneyDev</li>
-                    <li>Your journal content remains your intellectual property</li>
-                    <li>You grant the App necessary permissions to store and display your content</li>
-                </ul>
-                
-                <h3>6. Disclaimer of Warranties</h3>
-                <p>The App is provided "as is" without warranties of any kind. RodneyDev does not guarantee:</p>
-                <ul>
-                    <li>That the App will meet your specific requirements</li>
-                    <li>That the App will be uninterrupted or error-free</li>
-                    <li>The security or backup of your data (users are responsible for their own backups)</li>
-                </ul>
-                
-                <h3>7. Limitation of Liability</h3>
-                <p>RodneyDev shall not be liable for:</p>
-                <ul>
-                    <li>Any loss of data or journal entries</li>
-                    <li>Indirect, incidental, or consequential damages</li>
-                    <li>Any issues arising from device compatibility or updates</li>
-                </ul>
-                
-                <h3>8. Changes to Terms</h3>
-                <p>RodneyDev reserves the right to modify these terms at any time. Continued use of the App constitutes acceptance of revised terms.</p>
-                
-                <h3>9. Termination</h3>
-                <p>You may stop using the App at any time. RodneyDev may terminate access if you violate these terms.</p>
-            </div>
-            
-            <!-- Privacy Policy Tab -->
-            <div id="privacy" class="tab-content">
-                <h2>Privacy Policy</h2>
-                <div class="last-updated">Last Updated: February 7, 2026</div>
-                
-                <p><strong>This Privacy Policy applies to the DJOURNAL mobile application, published on Google Play by RodneyDev (Rodney Swain).</strong></p>
-                
-                <h3>Developer Information</h3>
-                <ul>
-                    <li><strong>App Name:</strong> DJOURNAL</li>
-                    <li><strong>Developer/Legal Entity:</strong> RodneyDev (Rodney Swain)</li>
-                    <li><strong>Contact Email:</strong> rodieswain@gmail.com</li>
-                    <li><strong>Platform:</strong> Google Play Store</li>
-                </ul>
-                
-                <h3>1. Information We Collect</h3>
-                <p>DJOURNAL is designed with privacy as a priority. We collect minimal information:</p>
-                
-                <h4>Personal Data:</h4>
-                <ul>
-                    <li>No personal identification is required to use the App</li>
-                    <li>Journal entries are stored locally on your device only</li>
-                    <li>No names, emails, or personal details are collected</li>
-                </ul>
-                
-                <h4>Technical Data (if applicable through Google Play Services):</h4>
-                <ul>
-                    <li>Anonymous usage statistics (through Google Play Console)</li>
-                    <li>Crash reports to improve app stability</li>
-                    <li>Device type and Android version for compatibility purposes</li>
-                </ul>
-                
-                <div class="highlight-box">
-                    <strong>Privacy First Design:</strong> DJOURNAL operates entirely offline. Your journal entries never leave your device and are not accessible by the developer or any third parties.
-                </div>
-                
-                <h3>2. How We Use Information</h3>
-                <ul>
-                    <li>Improve app functionality and fix bugs</li>
-                    <li>Analyze anonymous usage patterns</li>
-                    <li>Ensure compatibility with different devices</li>
-                    <li>No personal data is sold, shared, or monetized</li>
-                </ul>
-                
-                <h3>3. Data Storage and Security</h3>
-                <ul>
-                    <li>Journal entries remain on your device</li>
-                    <li>No cloud storage or external servers are used</li>
-                    <li>We recommend you regularly backup your device</li>
-                    <li>The developer cannot access, recover, or restore lost journal entries</li>
-                </ul>
-                
-                <h3>4. Third-Party Services</h3>
-                <p>The App may use:</p>
-                <ul>
-                    <li><strong>Google Play Services:</strong> For app distribution and updates only</li>
-                    <li>No advertising networks or analytics services are integrated</li>
-                    <li>No social media sharing features are included</li>
-                </ul>
-                
-                <h3>5. Children's Privacy</h3>
-                <p>DJOURNAL is suitable for all ages. We do not knowingly collect any personal information from children under 13.</p>
-                
-                <h3>6. Your Rights</h3>
-                <ul>
-                    <li>You control all your journal content</li>
-                    <li>You can delete the App at any time, which removes all local data</li>
-                    <li>No accounts or profiles to manage or delete</li>
-                </ul>
-                
-                <h3>7. Changes to Privacy Policy</h3>
-                <p>Updates to this policy will be reflected in the App description on Google Play.</p>
-                
-                <h3>8. Compliance</h3>
-                <ul>
-                    <li>Complies with Google Play User Data Policy</li>
-                    <li>Designed with minimal data collection in mind</li>
-                    <li>Respects user privacy and device storage</li>
-                </ul>
-                
-                <h3>9. Contact for Privacy Questions</h3>
-                <p>For privacy-related questions or concerns about DJOURNAL, please contact:</p>
-                <p><strong>RodneyDev (Rodney Swain)</strong><br>
-                Email: <a href="mailto:rodieswain@gmail.com">rodieswain@gmail.com</a></p>
-            </div>
-            
-            <!-- About App Tab -->
-            <div id="app" class="tab-content">
-                <h2>About DJOURNAL App</h2>
-                
-                <p>DJOURNAL is a simple, privacy-focused journaling application designed to help you capture daily thoughts, memories, and reflections. With its clean interface and offline functionality, it provides a secure space for personal writing without distractions.</p>
-                
-                <div class="app-info">
-                    <div class="app-feature">
-                        <div class="feature-icon">📱</div>
-                        <h4>Simple & Intuitive</h4>
-                        <p>Easy-to-use interface that lets you focus on writing. No complex features or learning curve.</p>
-                    </div>
-                    
-                    <div class="app-feature">
-                        <div class="feature-icon">🔒</div>
-                        <h4>Privacy First</h4>
-                        <p>All data stays on your device. No accounts, no cloud sync, no data collection.</p>
-                    </div>
-                    
-                    <div class="app-feature">
-                        <div class="feature-icon">📝</div>
-                        <h4>Daily Journaling</h4>
-                        <p>Write 3 sentences about your day to build a habit of reflection and gratitude.</p>
-                    </div>
-                </div>
-                
-                <h3>Key Features</h3>
-                <ul>
-                    <li><strong>Offline Functionality:</strong> Works completely without internet connection</li>
-                    <li><strong>Local Storage:</strong> All entries saved directly to your device</li>
-                    <li><strong>No Accounts Needed:</strong> Start writing immediately after installation</li>
-                    <li><strong>Minimalist Design:</strong> Clean interface free from distractions</li>
-                    <li><strong>Privacy Guaranteed:</strong> Developer cannot access your journal entries</li>
-                </ul>
-                
-                <h3>App Description (From Google Play)</h3>
-                <div class="highlight-box">
-                    <p><strong>Short Description:</strong> Write 3 sentences about your day.</p>
-                    <p><strong>Full Description:</strong> Write 3 sentences about your day. By doing so you get to remember about your day and appreciate or remember some important events.</p>
-                </div>
-                
-                <h3>Available on Google Play</h3>
-                <p>DJOURNAL is available for download on the Google Play Store. Search for "DJOURNAL" or look for the developer "RodneyDev".</p>
-            </div>
-            
-            <!-- Contact Tab -->
-            <div id="contact" class="tab-content">
-                <h2>Contact the Developer</h2>
-                
-                <div class="contact-card">
-                    <h3>RodneyDev (Rodney Swain)</h3>
-                    <p>Independent Android Developer</p>
-                    <p>Creator of DJOURNAL and other mobile applications</p>
-                    
-                    <div style="margin: 25px 0;">
-                        <h4>Primary Contact Email:</h4>
-                        <a href="mailto:rodieswain@gmail.com" class="email-link">rodieswain@gmail.com</a>
-                    </div>
-                    
-                    <p>I appreciate feedback, bug reports, and suggestions for improving DJOURNAL.</p>
-                </div>
-                
-                <h3>What to Include in Your Email</h3>
-                <p>To help me assist you better, please include the following when contacting:</p>
-                <ul>
-                    <li>Your device model and Android version</li>
-                    <li>A clear description of the issue or suggestion</li>
-                    <li>Steps to reproduce any bugs (if applicable)</li>
-                    <li>Screenshots (if helpful to explain the issue)</li>
-                </ul>
-                
-                <h3>Response Time</h3>
-                <p>I try to respond to all emails within 2-3 business days. Please be patient as I'm an independent developer managing multiple projects.</p>
-                
-                <h3>Support Scope</h3>
-                <p>I can help with:</p>
-                <ul>
-                    <li>Bug reports and technical issues</li>
-                    <li>Feature requests for future updates</li>
-                    <li>Questions about the app functionality</li>
-                    <li>Clarifications about privacy and data handling</li>
-                </ul>
-                
-                <p>Note: As mentioned in the Terms of Service, I cannot recover lost journal entries since all data is stored locally on your device.</p>
-            </div>
-        </div>
-        
-        <footer>
-            <p>© 2026 RodneyDev. All rights reserved.</p>
-            <p>DJOURNAL is available on Google Play Store. Google Play and the Google Play logo are trademarks of Google LLC.</p>
-            <p>This website contains the official Terms of Service and Privacy Policy for the DJOURNAL Android application.</p>
-        </footer>
+
+<!-- ════════ MASTHEAD ════════ -->
+<header class="masthead">
+  <div class="masthead-eyebrow">Official Legal Documentation · Google Play</div>
+  <h1>D<span>JOURNAL</span></h1>
+  <div class="masthead-sub">Personal Journaling Application — Android</div>
+  <div class="masthead-meta">
+    Developer: <span>Kemboi254</span>
+    &nbsp;|&nbsp;
+    Platform: <span>Google Play Store</span>
+    &nbsp;|&nbsp;
+    Version: <span>3.0 Release</span>
+  </div>
+</header>
+
+<!-- ════════ COMPLIANCE BADGE ════════ -->
+<div class="badge-row">
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+  Fully Compliant with Google Play Developer Programme Policies · Last Reviewed February 2026
+</div>
+
+<!-- ════════ STICKY NAV ════════ -->
+<nav class="sticky-nav" role="navigation" aria-label="Policy sections">
+  <div class="nav-inner">
+    <button class="nav-btn active" data-tab="privacy">Privacy Policy</button>
+    <button class="nav-btn" data-tab="terms">Terms of Service</button>
+    <button class="nav-btn" data-tab="data">Data Practices</button>
+    <button class="nav-btn" data-tab="app">About App</button>
+    <button class="nav-btn" data-tab="contact">Contact</button>
+  </div>
+</nav>
+
+<!-- ════════ MAIN CONTENT ════════ -->
+<main class="shell">
+
+  <!-- ── PRIVACY POLICY ───────────────────────────────── -->
+  <section id="privacy" class="tab-panel active" aria-labelledby="privacy-h2">
+
+    <div class="section-head">
+      <div class="eyebrow">Section 01</div>
+      <h2 id="privacy-h2">Privacy Policy</h2>
+      <div class="effective-date">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        Effective Date: February 7, 2026 &nbsp;|&nbsp; Applies to: DJOURNAL for Android
+      </div>
     </div>
-    
-    <button class="print-btn" title="Print this page">🖨️</button>
-    <button class="back-to-top" title="Back to top">↑</button>
-    
-    <script>
-        // Tab navigation functionality
-        document.querySelectorAll('.tab-btn').forEach(button => {
-            button.addEventListener('click', () => {
-                const tabId = button.getAttribute('data-tab');
-                
-                // Remove active class from all tabs and buttons
-                document.querySelectorAll('.tab-btn').forEach(btn => {
-                    btn.classList.remove('active');
-                });
-                
-                document.querySelectorAll('.tab-content').forEach(content => {
-                    content.classList.remove('active');
-                });
-                
-                // Add active class to clicked button and corresponding content
-                button.classList.add('active');
-                document.getElementById(tabId).classList.add('active');
-                
-                // Scroll to top
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            });
-        });
-        
-        // Print functionality
-        document.querySelector('.print-btn').addEventListener('click', () => {
-            window.print();
-        });
-        
-        // Back to top functionality
-        const backToTopBtn = document.querySelector('.back-to-top');
-        
-        backToTopBtn.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-        
-        // Show/hide back to top button based on scroll position
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) {
-                backToTopBtn.classList.add('show');
-            } else {
-                backToTopBtn.classList.remove('show');
-            }
-        });
-        
-        // Email link functionality
-        document.querySelectorAll('.email-link').forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                const email = 'rodieswain@gmail.com';
-                const subject = 'DJOURNAL App Inquiry';
-                const body = 'Hello RodneyDev,\n\nI am contacting you regarding the DJOURNAL app.\n\n';
-                window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-            });
-        });
-        
-        // Set current year in footer
-        document.querySelector('footer p:first-child').innerHTML = `© ${new Date().getFullYear()} RodneyDev. All rights reserved.`;
-        
-        // Highlight current section in URL hash
-        window.addEventListener('load', () => {
-            const hash = window.location.hash.substring(1);
-            if (hash && ['terms', 'privacy', 'app', 'contact'].includes(hash)) {
-                document.querySelector(`[data-tab="${hash}"]`).click();
-            }
-        });
-        
-        // Update URL hash when tab changes
-        document.querySelectorAll('.tab-btn').forEach(button => {
-            button.addEventListener('click', () => {
-                const tabId = button.getAttribute('data-tab');
-                window.history.pushState(null, null, `#${tabId}`);
-            });
-        });
-    </script>
+
+    <div class="prose">
+
+      <div class="callout callout-privacy">
+        <strong>Privacy First Commitment</strong>
+        DJOURNAL is built on a single principle: your thoughts belong only to you. The app operates entirely offline. No journal content ever leaves your device. The developer has zero access to anything you write.
+      </div>
+
+      <h3>1. Controller Information</h3>
+      <p>The data controller responsible for this application is:</p>
+      <ul>
+        <li><strong>Developer / Legal Entity:</strong> Kemboi254</li>
+        <li><strong>Contact Email:</strong> <a href="mailto:rodieswain@gmail.com">rodieswain@gmail.com</a></li>
+        <li><strong>Distribution Platform:</strong> Google Play Store</li>
+        <li><strong>App Package:</strong> DJOURNAL – Personal Journaling App</li>
+      </ul>
+
+      <h3>2. Scope of This Policy</h3>
+      <p>This Privacy Policy applies to all users of the DJOURNAL Android application distributed through the Google Play Store. By installing or using DJOURNAL, you confirm you have read and understood this policy. This policy is compliant with:</p>
+      <ul>
+        <li>Google Play Developer Programme Policies (User Data)</li>
+        <li>Google Play Families Policy (Children)</li>
+        <li>General Data Protection Regulation (GDPR) principles</li>
+        <li>California Consumer Privacy Act (CCPA) principles</li>
+        <li>Kenya Data Protection Act 2019</li>
+      </ul>
+
+      <h3>3. What Data We Collect</h3>
+      <p>DJOURNAL is designed with data minimisation as its core principle. Here is a complete and transparent breakdown:</p>
+
+      <h4>A. Data You Create</h4>
+      <ul>
+        <li>Journal entries (text) you write within the app</li>
+        <li>Dates and timestamps associated with entries</li>
+        <li>Any optional settings or preferences you configure</li>
+      </ul>
+      <p><strong>Storage location:</strong> Exclusively on your device's local storage. Never transmitted externally.</p>
+
+      <h4>B. Data Collected Automatically</h4>
+      <ul>
+        <li><strong>Crash reports:</strong> Anonymous technical data via Android's crash reporting if you have opted in at the OS level. This includes stack traces and device type — no personal content.</li>
+        <li><strong>App performance data:</strong> Aggregate, anonymous metrics provided through Google Play Console (install counts, ratings, device compatibility). Kemboi254 does not control or initiate this collection — it is part of Google's platform analytics.</li>
+      </ul>
+
+      <h4>C. Data We Do NOT Collect</h4>
+      <ul>
+        <li>Names, email addresses, or any identifying information</li>
+        <li>Location data (GPS or network-based)</li>
+        <li>Contacts, photos, camera, or microphone</li>
+        <li>Journal content or any text you write</li>
+        <li>Device identifiers (IMEI, advertising ID)</li>
+        <li>Financial or payment information</li>
+      </ul>
+
+      <div class="callout callout-compliance">
+        <strong>Google Play Compliance Note</strong>
+        In accordance with Google Play's User Data policy, this section constitutes a prominent, complete, and honest disclosure of all data practices. No sensitive user data is collected, transmitted, or shared by this application.
+      </div>
+
+      <h3>4. How We Use Information</h3>
+      <p>The limited anonymous data accessible through platform analytics is used solely to:</p>
+      <ul>
+        <li>Diagnose and resolve application crashes or errors</li>
+        <li>Understand device compatibility requirements for future updates</li>
+        <li>Improve app stability and performance</li>
+      </ul>
+      <p>Your journal entries are <strong>never</strong> read, processed, analysed, or used for any purpose by the developer or any third party.</p>
+
+      <h3>5. Legal Basis for Processing</h3>
+      <p>Where data protection law applies, the legal basis for the limited processing described above is:</p>
+      <ul>
+        <li><strong>Legitimate Interest:</strong> Maintaining application stability and fixing bugs to provide a working service</li>
+        <li><strong>Consent:</strong> Crash reporting is only transmitted if you have consented at the Android operating system level</li>
+      </ul>
+
+      <h3>6. Data Sharing and Third Parties</h3>
+      <p>Kemboi254 does not sell, rent, trade, or share your personal data with any third party for commercial or any other purposes. The only third party with any involvement is:</p>
+      <ul>
+        <li><strong>Google LLC (Google Play Services):</strong> Responsible for app distribution, updates, and platform-level analytics. Subject to <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's Privacy Policy</a>.</li>
+      </ul>
+      <p>No advertising networks, analytics SDKs, social media integrations, or data brokers are used in DJOURNAL.</p>
+
+      <h3>7. Data Retention</h3>
+      <ul>
+        <li><strong>Your journal entries:</strong> Retained on your device for as long as you keep the app installed. Immediately deleted when you uninstall the app or clear app data.</li>
+        <li><strong>Crash/analytics data:</strong> Retained by Google Play Console per Google's data retention policies. Kemboi254 has no control over this retention period.</li>
+        <li>The developer retains no user data independently.</li>
+      </ul>
+
+      <h3>8. Data Security</h3>
+      <p>DJOURNAL implements the following security measures:</p>
+      <ul>
+        <li>All journal data is stored using Android's standard local storage, protected by your device's security layer (PIN, fingerprint, etc.)</li>
+        <li>No network connections are made by the core application</li>
+        <li>No external servers, APIs, or databases are used</li>
+        <li>The developer strongly recommends enabling device-level encryption and regular device backups via Google Drive or other backup services</li>
+      </ul>
+
+      <div class="callout callout-warning">
+        <strong>Important – Data Loss Risk</strong>
+        Because all data is stored locally on your device, Kemboi254 cannot recover, restore, or access any journal entries under any circumstances. Uninstalling the app permanently deletes all entries. Please maintain regular device backups.
+      </div>
+
+      <h3>9. Children's Privacy</h3>
+      <p>DJOURNAL does not knowingly collect personal information from children under the age of 13 (or the applicable age of digital consent in your jurisdiction). The application is designed to be appropriate for all ages. No age-gating features are required because no personal data is collected from any user, of any age.</p>
+      <p>Parents or guardians who believe their child has inadvertently provided personal information should contact us at the address below. We will take immediate steps to address the concern.</p>
+
+      <h3>10. Your Rights</h3>
+      <p>Depending on your jurisdiction, you may have the following rights regarding your data:</p>
+      <ul>
+        <li><strong>Right of Access:</strong> You can view all your data directly within the app at any time</li>
+        <li><strong>Right to Erasure:</strong> Uninstalling the app or clearing app data permanently deletes all locally stored entries</li>
+        <li><strong>Right to Portability:</strong> Your data exists on your device and is under your full control</li>
+        <li><strong>Right to Object:</strong> No processing of personal data occurs that you can object to</li>
+        <li><strong>Right to Withdraw Consent:</strong> You can disable crash reporting through your Android device settings</li>
+      </ul>
+
+      <h3>11. International Users</h3>
+      <p>DJOURNAL is available globally via Google Play. Because no personal data is transmitted from your device, there are no cross-border data transfers initiated by the application. Google Play's infrastructure may operate in multiple jurisdictions subject to Google's own policies.</p>
+
+      <h3>12. Changes to This Privacy Policy</h3>
+      <p>Kemboi254 reserves the right to update this Privacy Policy to reflect changes in the app, legal requirements, or best practices. When changes are made:</p>
+      <ul>
+        <li>The "Effective Date" at the top of this page will be updated</li>
+        <li>The updated policy will be linked from the Google Play Store listing</li>
+        <li>For material changes, notice will be provided through an app update</li>
+      </ul>
+      <p>Continued use of the app following any changes constitutes acceptance of the updated policy.</p>
+
+      <h3>13. Contact for Privacy Enquiries</h3>
+      <p>For any questions, concerns, or requests related to this Privacy Policy, please contact:</p>
+      <ul>
+        <li><strong>Developer:</strong> Kemboi254</li>
+        <li><strong>Email:</strong> <a href="mailto:rodieswain@gmail.com">rodieswain@gmail.com</a></li>
+        <li><strong>Response time:</strong> Within 2–3 business days</li>
+      </ul>
+
+    </div>
+  </section>
+
+  <!-- ── TERMS OF SERVICE ──────────────────────────────── -->
+  <section id="terms" class="tab-panel" aria-labelledby="terms-h2">
+
+    <div class="section-head">
+      <div class="eyebrow">Section 02</div>
+      <h2 id="terms-h2">Terms of Service</h2>
+      <div class="effective-date">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        Effective Date: February 7, 2026 &nbsp;|&nbsp; Jurisdiction: Worldwide
+      </div>
+    </div>
+
+    <div class="prose">
+
+      <p>These Terms of Service ("Terms") govern your use of the DJOURNAL mobile application ("App") published on Google Play by Kemboi254 ("Developer," "we," "us," or "our"). By downloading, installing, or using the App, you agree to be legally bound by these Terms. <strong>If you do not agree, do not install or use the App.</strong></p>
+
+      <h3>1. Acceptance of Terms</h3>
+      <p>Your use of DJOURNAL constitutes your agreement to these Terms. If you are using the App on behalf of a minor in your care, you accept these Terms on their behalf and take full responsibility for their compliance.</p>
+
+      <h3>2. Description of the App</h3>
+      <p>DJOURNAL is a personal, offline journaling application for Android devices. It allows you to:</p>
+      <ul>
+        <li>Write and save daily journal entries on your device</li>
+        <li>Reflect on personal experiences, thoughts, and memories</li>
+        <li>Build a habit of self-reflection through concise daily writing</li>
+        <li>Access all entries privately, without an account or internet connection</li>
+      </ul>
+
+      <h3>3. Eligibility</h3>
+      <p>You may use DJOURNAL if you are:</p>
+      <ul>
+        <li>At least 13 years of age (or the minimum digital age of consent in your country)</li>
+        <li>Capable of forming a legally binding contract under applicable law</li>
+        <li>Using the App in compliance with all applicable local, national, and international laws</li>
+      </ul>
+
+      <h3>4. Licence Grant</h3>
+      <p>Subject to your compliance with these Terms, Kemboi254 grants you a limited, non-exclusive, non-transferable, revocable licence to install and use the App on Android devices you own or control, solely for personal, non-commercial purposes.</p>
+
+      <h3>5. User Content and Ownership</h3>
+      <ul>
+        <li>You retain full ownership and all intellectual property rights to journal entries and content you create within the App</li>
+        <li>All content is stored locally on your device; the Developer has no access to it</li>
+        <li>You grant the App the necessary technical permissions to store and display your content on your device</li>
+        <li>You are solely responsible for the content of your journal entries</li>
+      </ul>
+
+      <h3>6. Acceptable Use</h3>
+      <p>You agree not to use the App to:</p>
+      <ul>
+        <li>Violate any applicable law or regulation</li>
+        <li>Infringe any intellectual property rights of any person or entity</li>
+        <li>Attempt to reverse engineer, decompile, disassemble, or modify the App</li>
+        <li>Remove, alter, or obscure any proprietary notices within the App</li>
+        <li>Distribute or resell the App without authorisation</li>
+        <li>Use the App for any commercial purpose without prior written consent</li>
+      </ul>
+
+      <h3>7. Intellectual Property</h3>
+      <p>The App — including its source code, interface design, graphics, branding, and all associated materials — is the exclusive intellectual property of Kemboi254, protected by copyright and other applicable laws. Nothing in these Terms transfers any IP rights to you beyond the limited licence in Section 4.</p>
+
+      <h3>8. No Account Required — Data Responsibility</h3>
+      <div class="callout callout-warning">
+        <strong>Critical Data Notice</strong>
+        DJOURNAL requires no user account. All journal data is stored exclusively on your device. The Developer cannot access, back up, or restore any of your data under any circumstances. You are solely responsible for maintaining backups of your journal content through your device's backup services.
+      </div>
+
+      <h3>9. Disclaimer of Warranties</h3>
+      <p>The App is provided "as is" and "as available" without warranties of any kind, whether express or implied. To the fullest extent permitted by law, Kemboi254 disclaims all warranties, including:</p>
+      <ul>
+        <li>Implied warranties of merchantability and fitness for a particular purpose</li>
+        <li>Warranty that the App will be uninterrupted, error-free, or secure</li>
+        <li>Warranty that defects will be corrected</li>
+        <li>Any warranty relating to data backup, security, or recovery</li>
+      </ul>
+
+      <h3>10. Limitation of Liability</h3>
+      <p>To the maximum extent permitted by applicable law, Kemboi254 shall not be liable for:</p>
+      <ul>
+        <li>Loss of journal entries or personal data due to device failure, software errors, or user action</li>
+        <li>Any indirect, incidental, special, consequential, or punitive damages</li>
+        <li>Loss of data, profits, goodwill, or business opportunities</li>
+        <li>Any damages arising from reliance on the App or its outputs</li>
+      </ul>
+      <p>Where liability cannot be fully excluded by law, total liability shall not exceed USD $5 or the equivalent in your local currency.</p>
+
+      <h3>11. Indemnification</h3>
+      <p>You agree to indemnify, defend, and hold harmless Kemboi254 from any claims, damages, losses, liabilities, costs, and expenses (including reasonable legal fees) arising from your use of the App or violation of these Terms.</p>
+
+      <h3>12. Changes to the App and Terms</h3>
+      <p>Kemboi254 reserves the right to modify, suspend, or discontinue the App or these Terms at any time. Changes to Terms will be posted on this page with an updated Effective Date. Continued use of the App following any changes constitutes acceptance of the revised Terms.</p>
+
+      <h3>13. Termination</h3>
+      <p>You may stop using the App at any time by uninstalling it. Kemboi254 may, at its sole discretion, restrict or terminate your access to the App if you violate these Terms. Sections 7, 9, 10, and 11 survive termination.</p>
+
+      <h3>14. Governing Law and Dispute Resolution</h3>
+      <p>These Terms shall be governed by and construed in accordance with the laws of Kenya, without regard to its conflict of law provisions. Any disputes shall first be attempted to be resolved amicably by contacting Kemboi254 at the email address below. If unresolved, disputes shall be submitted to binding arbitration or the competent courts of Kenya.</p>
+
+      <h3>15. Severability</h3>
+      <p>If any provision of these Terms is found to be unenforceable or invalid, that provision shall be limited or eliminated to the minimum extent necessary, and the remaining Terms shall remain in full force and effect.</p>
+
+      <h3>16. Entire Agreement</h3>
+      <p>These Terms, together with the Privacy Policy, constitute the entire agreement between you and Kemboi254 regarding the App and supersede all prior agreements or understandings.</p>
+
+      <h3>17. Contact</h3>
+      <p>For questions about these Terms of Service:</p>
+      <ul>
+        <li><strong>Developer:</strong> Kemboi254</li>
+        <li><strong>Email:</strong> <a href="mailto:rodieswain@gmail.com">rodieswain@gmail.com</a></li>
+      </ul>
+
+    </div>
+  </section>
+
+  <!-- ── DATA PRACTICES ────────────────────────────────── -->
+  <section id="data" class="tab-panel" aria-labelledby="data-h2">
+
+    <div class="section-head">
+      <div class="eyebrow">Section 03</div>
+      <h2 id="data-h2">Data Practices Summary</h2>
+      <div class="effective-date">Quick-reference transparency table for users and reviewers</div>
+    </div>
+
+    <div class="prose">
+
+      <div class="callout callout-info">
+        <strong>For Google Play Reviewers</strong>
+        This section provides a plain-language, tabulated summary of all data handling practices for DJOURNAL. No personal data is collected, transmitted, or shared. All user-generated content remains on the user's device only.
+      </div>
+
+      <h3>Data Collection Summary</h3>
+      <table class="policy-table" role="table">
+        <thead>
+          <tr>
+            <th>Data Type</th>
+            <th>Collected?</th>
+            <th>Where Stored</th>
+            <th>Shared?</th>
+            <th>Purpose</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Journal entries (text)</td>
+            <td><span class="pill pill-no">Device Only</span></td>
+            <td>Local device storage</td>
+            <td><span class="pill pill-no">Never</span></td>
+            <td>Core app function</td>
+          </tr>
+          <tr>
+            <td>Name / Email / ID</td>
+            <td><span class="pill pill-no">Not Collected</span></td>
+            <td>—</td>
+            <td><span class="pill pill-no">Never</span></td>
+            <td>Not required</td>
+          </tr>
+          <tr>
+            <td>Location data</td>
+            <td><span class="pill pill-no">Not Collected</span></td>
+            <td>—</td>
+            <td><span class="pill pill-no">Never</span></td>
+            <td>Not used</td>
+          </tr>
+          <tr>
+            <td>Crash / error reports</td>
+            <td><span class="pill pill-anon">Anonymous Only</span></td>
+            <td>Google Play Console</td>
+            <td><span class="pill pill-anon">Via Google</span></td>
+            <td>Stability improvement</td>
+          </tr>
+          <tr>
+            <td>App analytics</td>
+            <td><span class="pill pill-anon">Anonymous Only</span></td>
+            <td>Google Play Console</td>
+            <td><span class="pill pill-anon">Via Google</span></td>
+            <td>Compatibility</td>
+          </tr>
+          <tr>
+            <td>Advertising ID</td>
+            <td><span class="pill pill-no">Not Collected</span></td>
+            <td>—</td>
+            <td><span class="pill pill-no">Never</span></td>
+            <td>No ads used</td>
+          </tr>
+          <tr>
+            <td>Financial / payment info</td>
+            <td><span class="pill pill-no">Not Collected</span></td>
+            <td>—</td>
+            <td><span class="pill pill-no">Never</span></td>
+            <td>App is free</td>
+          </tr>
+          <tr>
+            <td>Contacts / Camera / Mic</td>
+            <td><span class="pill pill-no">Not Collected</span></td>
+            <td>—</td>
+            <td><span class="pill pill-no">Never</span></td>
+            <td>Not used</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Android Permissions</h3>
+      <p>DJOURNAL requests only the minimum permissions necessary to function:</p>
+      <table class="policy-table" role="table">
+        <thead>
+          <tr>
+            <th>Permission</th>
+            <th>Required?</th>
+            <th>Reason</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>WRITE_EXTERNAL_STORAGE</code> / <code>READ_EXTERNAL_STORAGE</code></td>
+            <td><span class="pill pill-yes">If Used</span></td>
+            <td>Local data saving only (device-level)</td>
+          </tr>
+          <tr>
+            <td>INTERNET</td>
+            <td><span class="pill pill-no">Not Requested</span></td>
+            <td>App operates fully offline</td>
+          </tr>
+          <tr>
+            <td>CAMERA / MICROPHONE / CONTACTS</td>
+            <td><span class="pill pill-no">Not Requested</span></td>
+            <td>Not used in the app</td>
+          </tr>
+          <tr>
+            <td>ACCESS_FINE_LOCATION</td>
+            <td><span class="pill pill-no">Not Requested</span></td>
+            <td>Location not used</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Third-Party SDKs &amp; Libraries</h3>
+      <table class="policy-table" role="table">
+        <thead>
+          <tr>
+            <th>Library / Service</th>
+            <th>Purpose</th>
+            <th>Data Access</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Google Play Services</td>
+            <td>App distribution, update delivery, platform-level crash reporting</td>
+            <td>Anonymous device/platform data only</td>
+          </tr>
+          <tr>
+            <td>Advertising SDKs</td>
+            <td colspan="2" style="color:var(--muted); font-style:italic;">None integrated — no advertisements in DJOURNAL</td>
+          </tr>
+          <tr>
+            <td>Analytics SDKs (Firebase etc.)</td>
+            <td colspan="2" style="color:var(--muted); font-style:italic;">None integrated — no third-party analytics</td>
+          </tr>
+          <tr>
+            <td>Social Media SDKs</td>
+            <td colspan="2" style="color:var(--muted); font-style:italic;">None integrated — no social features</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Google Play Data Safety Form Alignment</h3>
+      <div class="callout callout-compliance">
+        <strong>Declaration Summary</strong>
+        This policy aligns with the following Google Play Data Safety declarations:<br><br>
+        • <strong>Data collected:</strong> Approximate location — No. Personal info — No. Financial info — No. Health &amp; fitness — No. Messages — No. Photos/videos — No. Audio files — No. Files/docs — No. Calendar — No. Contacts — No. App activity — No. Web browsing — No. App info/performance — Crash logs (anonymous). Device/other IDs — No.<br><br>
+        • <strong>Data shared with third parties:</strong> None (Google Play platform analytics are Google's own data, not shared by the developer).<br><br>
+        • <strong>Security practices:</strong> Data encrypted in transit — N/A (no data transmitted). Data can be deleted — Yes (uninstall or clear app data).
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── ABOUT APP ──────────────────────────────────────── -->
+  <section id="app" class="tab-panel" aria-labelledby="app-h2">
+
+    <div class="section-head">
+      <div class="eyebrow">Section 04</div>
+      <h2 id="app-h2">About DJOURNAL</h2>
+      <div class="effective-date">Application overview and feature description</div>
+    </div>
+
+    <div class="prose">
+
+      <p>DJOURNAL is a lightweight, offline-first journaling application for Android designed to encourage daily reflection. The core philosophy: three sentences a day is enough to preserve memories, appreciate moments, and build a lasting record of your life.</p>
+
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="icon">📱</div>
+          <h4>Offline First</h4>
+          <p>Works with zero internet connection. Your writing habit doesn't depend on a server.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon">🔒</div>
+          <h4>Zero Data Collection</h4>
+          <p>No accounts, no cloud sync, no analytics on your content. Your words stay on your device.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon">✍️</div>
+          <h4>Daily Habit</h4>
+          <p>Write 3 sentences about your day. Small input, big impact on memory and gratitude.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon">⚡</div>
+          <h4>Instant Start</h4>
+          <p>No sign-up flow. Open the app and start writing immediately after installation.</p>
+        </div>
+      </div>
+
+      <h3>App Listing Details</h3>
+      <ul>
+        <li><strong>App Name:</strong> DJOURNAL</li>
+        <li><strong>Developer:</strong> Kemboi254</li>
+        <li><strong>Category:</strong> Productivity / Lifestyle</li>
+        <li><strong>Platform:</strong> Android (Google Play Store)</li>
+        <li><strong>Price:</strong> Free</li>
+        <li><strong>In-App Purchases:</strong> None</li>
+        <li><strong>Ads:</strong> None</li>
+        <li><strong>Internet Required:</strong> No</li>
+      </ul>
+
+      <div class="callout callout-info">
+        <strong>Short Description (Google Play)</strong>
+        Write 3 sentences about your day. By doing so you get to remember your day and appreciate or recall some important events.
+      </div>
+
+      <h3>Supported Android Versions</h3>
+      <p>DJOURNAL supports Android 5.0 (Lollipop) and above. Compatibility details are maintained on the Google Play Store listing and updated with each app release.</p>
+
+    </div>
+  </section>
+
+  <!-- ── CONTACT ────────────────────────────────────────── -->
+  <section id="contact" class="tab-panel" aria-labelledby="contact-h2">
+
+    <div class="section-head">
+      <div class="eyebrow">Section 05</div>
+      <h2 id="contact-h2">Contact Developer</h2>
+      <div class="effective-date">Support, feedback, and privacy enquiries</div>
+    </div>
+
+    <div class="prose">
+
+      <div class="contact-hero">
+        <div class="tag">Independent Android Developer</div>
+        <h3>Kemboi254</h3>
+        <div class="role">Creator of DJOURNAL · Google Play Developer</div>
+        <a href="mailto:rodieswain@gmail.com?subject=DJOURNAL%20Enquiry&body=Hello%20Kemboi254%2C%0A%0AI%20am%20writing%20regarding%20the%20DJOURNAL%20app.%0A%0A" class="email-btn">
+          rodieswain@gmail.com
+        </a>
+      </div>
+
+      <h3>When to Contact</h3>
+      <ul>
+        <li><strong>Privacy questions:</strong> Questions or concerns about data handling practices described in this policy</li>
+        <li><strong>Bug reports:</strong> Technical issues, crashes, or unexpected behaviour</li>
+        <li><strong>Feature requests:</strong> Suggestions for future versions</li>
+        <li><strong>Legal / compliance enquiries:</strong> Requests relating to user rights, GDPR, CCPA, or other regulations</li>
+        <li><strong>General feedback:</strong> Reviews, suggestions, or anything else</li>
+      </ul>
+
+      <h3>What to Include</h3>
+      <ul>
+        <li>Your device model and Android version</li>
+        <li>App version (visible in Settings &gt; About)</li>
+        <li>A clear description of your issue, question, or request</li>
+        <li>Steps to reproduce the issue (for bugs)</li>
+        <li>Screenshots, if applicable and helpful</li>
+      </ul>
+
+      <h3>Response Time</h3>
+      <p>Kemboi254 aims to respond to all enquiries within <strong>2–3 business days</strong>. Please allow extra time during public holidays.</p>
+
+      <div class="callout callout-warning">
+        <strong>Data Recovery Notice</strong>
+        The developer cannot recover, access, or restore journal entries under any circumstances. All data is stored exclusively on your device. If you have lost entries, they cannot be recovered by the developer.
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- ════════ FOOTER ════════ -->
+<footer role="contentinfo">
+  <p><strong>DJOURNAL</strong> · Privacy Policy &amp; Terms of Service</p>
+  <p>Developer: <strong>Kemboi254</strong> · <a href="mailto:rodieswain@gmail.com">rodieswain@gmail.com</a></p>
+  <p>© <span id="yr"></span> Kemboi254. All rights reserved.</p>
+  <p style="margin-top:10px; font-size:.68rem; opacity:.5;">
+    Google Play and the Google Play logo are trademarks of Google LLC. This page constitutes the official Privacy Policy and Terms of Service for the DJOURNAL Android application as required by Google Play Developer Programme Policies.
+  </p>
+</footer>
+
+<!-- ════════ FLOATING ACTIONS ════════ -->
+<div class="fab-group" role="complementary" aria-label="Page actions">
+  <button class="fab fab-top" id="fabTop" title="Back to top" aria-label="Scroll to top">↑</button>
+  <button class="fab fab-print" id="fabPrint" title="Print / Save as PDF" aria-label="Print page">🖨</button>
+</div>
+
+<script>
+  // Tab switching
+  const btns = document.querySelectorAll('.nav-btn');
+  const panels = document.querySelectorAll('.tab-panel');
+
+  btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const id = btn.dataset.tab;
+      btns.forEach(b => b.classList.remove('active'));
+      panels.forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(id).classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      history.replaceState(null, '', '#' + id);
+    });
+  });
+
+  // Deep link via hash
+  const hash = location.hash.slice(1);
+  if (hash) {
+    const target = document.querySelector(`[data-tab="${hash}"]`);
+    if (target) target.click();
+  }
+
+  // Back to top
+  const fabTop = document.getElementById('fabTop');
+  window.addEventListener('scroll', () => {
+    fabTop.classList.toggle('show', window.scrollY > 300);
+  });
+  fabTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  // Print
+  document.getElementById('fabPrint').addEventListener('click', () => window.print());
+
+  // Year
+  document.getElementById('yr').textContent = new Date().getFullYear();
+</script>
+
 </body>
 </html>
